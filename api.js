@@ -38,7 +38,6 @@ const  fetchData = async() => {
       printPagination(total);
       const totalPage = Math.ceil(total/20);
       createOptions(totalPage);
-      console.log('prueba')
     })
     .catch(response => console.error(response))
     return total

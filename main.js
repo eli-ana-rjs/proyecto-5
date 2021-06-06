@@ -159,7 +159,6 @@ const showComicCharacter = arr =>{
 
 // PAGINADO
 
-{/* <li><a class="pagination-link has-background-black has-text-white" aria-label="Goto page 86">86</a></li> */}
 const printLi = ( pageNumber , text, disabled ) => {
 
     const li = document.createElement('li');
@@ -192,7 +191,6 @@ const printPaginationLinks = ( pageCurrent , totalResults ) => {
 const lookingPage = ( pageCurrent , totalPages ) => {
 
     const p = document.createElement('p');
-    console.log('holla')
     p.innerHTML = `Estas viendo la página ${pageCurrent} de ${totalPages}`;
     view.appendChild(p);
     return p;
@@ -223,7 +221,6 @@ const createOption = (text) => {
 
 const createOptions = (totalPages) => {
 
-    console.log('algo')
     for (let index = 1; index <= totalPages; index++) {
         const op = createOption(index);
         select.appendChild(op);
@@ -237,8 +234,5 @@ const createOptions = (totalPages) => {
             return null;
         }
         window.location = location.protocol + '//' + location.host + location.pathname + '?page=' + pageNumber; 
-
-
-
     })
 }
