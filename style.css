@@ -144,6 +144,11 @@ select:first-of-type {
   transition: 4s;
 }
 
+.disabled{
+  background-color: rgb(182, 179, 179);
+  pointer-events: none;
+}
+
 footer {
   color: white;
   font-family: kiona;
