@@ -9,7 +9,12 @@ const totalResult = document.getElementById("total-result");
 const previousPage = document.getElementById('previous-page');
 const nextPage = document.getElementById('next-page');
 
-let offset = 0;
+const urlParams = new URLSearchParams(window.location.search);
+const page = urlParams.get('page') || 1;
+console.log({page});
+
+const offset = ( page - 1)*20;
+console.log({offset})
 let total = 0;
 
 
@@ -29,7 +34,11 @@ const  fetchData = async() => {
       prinData(Object.data.results)
       console.log(Object.data.results);
       total = Object.data.total
-      totalResult.innerHTML = total
+      totalResult.innerHTML = total;
+      printPagination(total);
+      const totalPage = Math.ceil(total/20);
+      createOptions(totalPage);
+      console.log('prueba')
     })
     .catch(response => console.error(response))
     return total

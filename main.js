@@ -1,10 +1,3 @@
-const main = async() => {
-    const getData = await fetchData();
-    console.log(getData.data);
-};
-
-main();
-
 const boxComics = document.getElementById("box-comics");
 const boxContainer = document.getElementById("box-container");
 const boxComicData = document.getElementById("box-comic-data");
@@ -15,6 +8,9 @@ const boxCharacterData = document.getElementById("box-character-data");
 const characterData = document.getElementById("character-data");
 const characterComicTotal = document.getElementById("character-comic-total");
 const characterComicData = document.getElementById("character-comic-data");
+const pagination = document.getElementById('pagination');
+const view = document.getElementById('view');
+const select = document.getElementById('select');
 
 
 const prinData = arr =>{
@@ -159,3 +155,90 @@ const showComicCharacter = arr =>{
     })
     characterComicData.innerHTML = box;
 };
+
+
+// PAGINADO
+
+{/* <li><a class="pagination-link has-background-black has-text-white" aria-label="Goto page 86">86</a></li> */}
+const printLi = ( pageNumber , text, disabled ) => {
+
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.classList.add('pagination-link', 'has-background-black' , 'has-text-white');
+    if(disabled){
+        a.classList.add('disabled');
+        a.classList.remove('has-background-black');
+    }
+    a.href = location.protocol + '//' + location.host + location.pathname + '?page=' + pageNumber;
+    a.innerText = text;
+    li.appendChild(a);
+
+    return li; 
+};
+
+const printPaginationLinks = ( pageCurrent , totalResults ) => {
+
+    const arrayLi = [];
+    const lastPage = Math.ceil(totalResults/20);
+    arrayLi.push(printLi(1,'<<', parseInt(pageCurrent) === 1));
+    arrayLi.push(printLi(pageCurrent - 1,'<',parseInt(pageCurrent) === 1));
+    arrayLi.push(printLi(pageCurrent , pageCurrent, true));
+    arrayLi.push(printLi(parseInt(pageCurrent) + 1,'>',parseInt(pageCurrent) === lastPage));
+    arrayLi.push(printLi(lastPage,'>>', parseInt(pageCurrent) === lastPage));
+
+    return arrayLi;
+}
+
+const lookingPage = ( pageCurrent , totalPages ) => {
+
+    const p = document.createElement('p');
+    console.log('holla')
+    p.innerHTML = `Estas viendo la página ${pageCurrent} de ${totalPages}`;
+    view.appendChild(p);
+    return p;
+}
+
+const printPagination = ( total ) => {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = urlParams.get('page') || 1;
+   
+    const links = printPaginationLinks(page , total );
+    links.forEach( (li) => {
+
+        pagination.appendChild(li);
+    });
+
+    lookingPage(page,parseInt(total/20));
+};
+
+const createOption = (text) => {
+
+    const option = document.createElement('option');
+    option.innerHTML = text;
+    option.value = text;
+
+    return option; 
+}
+
+const createOptions = (totalPages) => {
+
+    console.log('algo')
+    for (let index = 1; index <= totalPages; index++) {
+        const op = createOption(index);
+        select.appendChild(op);
+    }
+
+    select.addEventListener('change' , (event) => {
+
+        console.log(event.target.value);
+        const pageNumber = event.target.value || 1 ;
+        if(pageNumber === -1){
+            return null;
+        }
+        window.location = location.protocol + '//' + location.host + location.pathname + '?page=' + pageNumber; 
+
+
+
+    })
+}
