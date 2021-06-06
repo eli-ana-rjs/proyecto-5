@@ -1,123 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- links de meta tags -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CDN bulma -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
-    <!-- Links de CSS -->
-    <link rel="stylesheet" href="style.css" />
-    <title>Comics</title>
-  </head>
-  <body>
-    <nav class="presentacion">
-      <section class="medio"><span class="title"> ADA COMICS </span></section>
-    </nav>
-    <section class="hero is-medium is-link">
-      <div class="hero-body"></div>
-    </section>
-    <main class="container"><div class="search">
-        <h2 class="titulo-busqueda">Búsqueda</h2>
-        <div class="search-container">
-          <div class="search-input-container">
-            <input
-              type="text"
-              id="search-input"
-              class="search-input"
-              placeholder="Ingresá tu búsqueda"
-              aria-labelledby="titulo-busqueda"
-            />
-            <i class="fas fa-search" aria-hidden="true"></i>
-          </div>
-          <div class="search-inner-container">
-            <div class="sort-container">
-              <label for="search-type">TIPO</label>
-              <select name="search-type" id="search-type">
-                <option value="comics">COMICS</option>
-                <option value="characters">PERSONAJES</option>
-              </select>
-              <label for="search-sort">ORDEN</label>
-              <select name="search-sort" id="search-sort">
-                <option value="name" class="character-option">A-Z</option>
-                <option value="-name" class="character-option">Z-A</option>
-                <option value="title" class="comic-option">A-Z</option>
-                <option value="-title" class="comic-option">Z-A</option>
-                <option value="-onsaleDate" class="comic-option">
-                  Más nuevos
-                </option>
-                <option value="onsaleDate" class="comic-option">
-                  Más viejos
-                </option>
-              </select>
-            </div>
-            <button type="button" class="search-button">BUSCAR</button>
-          </div>
+
+<head>
+  <!-- links de meta tags -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- CDN bulma -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
+  <!-- Links de CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <title>Comics</title>
+</head>
+
+<body>
+  <nav class="presentacion">
+    <section class="medio"><span class="title"> ADA COMICS </span></section>
+  </nav>
+  <section class="hero is-medium is-link">
+    <div class="hero-body"></div>
+  </section>
+  <main class="container">
+    <div class="search">
+      <h2 class="titulo-busqueda">Búsqueda</h2>
+      <div class="search-container">
+        <div class="search-input-container">
+          <input type="text" id="search-input" class="search-input" placeholder="Ingresá tu búsqueda"
+            aria-labelledby="titulo-busqueda" />
+          <i class="fas fa-search" aria-hidden="true"></i>
         </div>
+        <div class="search-inner-container">
+          <div class="sort-container">
+            <label for="search-type">TIPO</label>
+            <select name="search-type" id="search-type">
+              <option value="comics">COMICS</option>
+              <option value="characters">PERSONAJES</option>
+            </select>
+            <label for="search-sort">ORDEN</label>
+            <select name="search-sort" id="search-sort">
+              <option value="name" class="character-option">A-Z</option>
+              <option value="-name" class="character-option">Z-A</option>
+              <option value="title" class="comic-option">A-Z</option>
+              <option value="-title" class="comic-option">Z-A</option>
+              <option value="-onsaleDate" class="comic-option">
+                Más nuevos
+              </option>
+              <option value="onsaleDate" class="comic-option">
+                Más viejos
+              </option>
+            </select>
+          </div>
+          <button type="button" class="search-button">BUSCAR</button>
+        </div>
+      </div>
 
-        
-    </main>
 
-      <!-- COMICS -->
+  </main>
+
+  <!-- COMICS -->
+
+  <section id="box-comics" class="container mb-5">
+    <h2 class="subtitle has-text-weight-bold mb-2 title-color">Resultados</h2>
+    <p class="mb-5 has-text-weight-bold has-text-grey"><span id="total-result">0</span> resultados</p>
+    <div id="box-container" class="columns is-flex-wrap-wrap">
       <div class="loader-wrapper">
         <div class="loader is-loading"></div>
+      </div>
     </div>
+  </section>
+  <section id="box-comic-data" class="container mb-5 is-hidden">
+    <div id="comic-data" class="p-6"></div>
+    <div id="comic-character-total" class="p-6"></div>
+    <div id="comic-character-data" class="columns is-flex is-flex-wrap-wrap px-6 pt-0"></div>
+  </section>
+  <section id="box-character-data" class="container mb-5 is-hidden">
+    <div id="character-data" class="p-6"></div>
+    <div id="character-comic-total" class="p-6"></div>
+    <div id="character-comic-data" class="columns is-flex is-flex-wrap-wrap px-6 pt-0"></div>
+  </section>
 
-    
+  <!-- END COMICS -->
 
-      <section id="box-comics" class="container mb-5">
-        <h2 class="subtitle has-text-weight-bold mb-2 title-color">Resultados</h2>
-        <p class="mb-5 has-text-weight-bold has-text-grey"><span id="total-result">0</span> resultados</p>
-        <div id="box-container" class="columns is-flex-wrap-wrap"></div>
-    </section>
-    <section id="box-comic-data" class="container mb-5 is-hidden">
-        <div id="comic-data" class="p-6"></div>
-        <div id="comic-character-total" class="p-6"></div>
-        <div id="comic-character-data" class="columns is-flex is-flex-wrap-wrap px-6 pt-0"></div>
-    </section>
-    <section id="box-character-data" class="container mb-5 is-hidden">
-        <div id="character-data" class="p-6"></div>
-        <div id="character-comic-total" class="p-6"></div>
-        <div id="character-comic-data" class="columns is-flex is-flex-wrap-wrap px-6 pt-0"></div>
-    </section>
-
-    <!-- END COMICS -->
-
-    <!-- PAGINADO -->
-    <section class="is-flex is-justify-content-center mb-6 mt-6">
-      <div>
-        <nav class="pagination has-background-white ml-6 mr-6" role="navigation" aria-label="pagination">
+  <!-- PAGINADO -->
+  <section class="is-flex is-justify-content-center mb-6 mt-6">
+    <div>
+      <nav class="pagination has-background-white ml-6 mr-6" role="navigation" aria-label="pagination">
         <ul class="pagination-list has-text-weight-bold" id="pagination">
-          
+
         </ul>
       </nav>
-      </div>
-
-      <div class="select">
-        <select id="select">
-          <option value="-1">Page</option>
-        </select>
-      </div>
-    </section>
-    <div id="view">
-
     </div>
 
-    
+    <div class="select">
+      <select id="select">
+        <option value="-1">Page</option>
+      </select>
+    </div>
+  </section>
+  <div id="view">
 
-    <footer>
-        <p class="pt-6">Hecho con 💖 por Eli, Kari y Cami </p>
-    </footer>
+  </div>
 
-    <!-- API marvel -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"
-      integrity="sha512-Hmp6qDy9imQmd15Ds1WQJ3uoyGCUz5myyr5ijainC1z+tP7wuXcze5ZZR3dF7+rkRALfNy7jcfgS5hH8wJ/2dQ=="
-      crossorigin="anonymous"
-    ></script>
-    <!-- Scripts JS -->
-    <script src="api.js"></script>
-    <script src="main.js"></script>
-  </body>
+
+
+  <footer>
+    <p class="pt-6">Hecho con 💖 por Eli, Kari y Cami </p>
+  </footer>
+
+  <!-- API marvel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"
+    integrity="sha512-Hmp6qDy9imQmd15Ds1WQJ3uoyGCUz5myyr5ijainC1z+tP7wuXcze5ZZR3dF7+rkRALfNy7jcfgS5hH8wJ/2dQ=="
+    crossorigin="anonymous"></script>
+  <!-- Scripts JS -->
+  <script src="api.js"></script>
+  <script src="main.js"></script>
+</body>
+
 </html>
