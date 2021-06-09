@@ -83,9 +83,9 @@ const showCharacterComic = arr =>{
         const pathNonFoundNowanted = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
         const pathNonFoundWanted = "https://i.pinimg.com/564x/6d/af/a0/6dafa08555ee450d9d61061c7bc23cb5";
         comicCharacterTotal.innerHTML = `
-        <h4 class="is-size-6 has-text-weight-bold mt-0">Personajes</h4>
+        <h4 class="is-size-6 mt-0">Personajes</h4>
                 <p class="is-size-6 has-text-weight-bold mt-0">${arr.length} Datos</p>`
-        box += `<div class="column is-one-fifth" onclick="getCharacterId(${id})">
+        box += `<div class="column is-one-fifth" onclick="getIdCharacter(${id})">
                     <div>
                         <img src="${path === pathNonFoundNowanted ? pathNonFoundWanted : path}.${extension}" alt="${name}">
                         <span></span>
@@ -125,13 +125,13 @@ const printDataCharacter = (arr) =>{
 
     if(arr[0].comics.available == 0){
         characterComicTotal.innerHTML = `
-        <h2 class="title mb-2">Comics</h2>
+        <h2 class="mb-2">Comics</h2>
             <p class="is-size-6 has-text-weight-bold mt-0">${arr[0].comics.available} Datos</p>
             <p class="subtitle has-text-weight-bold mt-6">No hay datos 😕</p>
         `
     }else{
         characterComicTotal.innerHTML = `
-        <h2 class="title mb-2">Comics</h2>
+        <h2 class="mb-2">Comics</h2>
         <p class="is-size-6 has-text-weight-bold mt-0">${arr[0].comics.available} Datos</p>
         `
     }
