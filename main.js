@@ -55,7 +55,7 @@ const printDataComic = arr =>{
                 </figure>
             </div>
             <div class="column is-size-5 px-6 py-4">
-                <h3 class ="has-text-weight-bold">${title}</h3>
+                <h3 class =" title has-text-weight-bold">${title}</h3>
                 <h4 class="has-text-weight-bold m-0 mb-2">Publicado:</h4>
                 <p>${premiere}</p>
                 <h4 class="has-text-weight-bold m-0 mt-3 mb-2">Guionistas:</h4>
@@ -114,7 +114,7 @@ const printDataCharacter = (arr) =>{
                 </figure>
             </div>
             <div class="column is-size-5 px-6 py-4">
-                <h2>${name}</h2>
+                <h2 class="title">${name}</h2>
                 <h3 class="has-text-weight-bold m-0 mt-3 mb-2">Descripción:</h3>
                 <p class="has-text-justified pr-6">${description ? description : 'No hay Datos 😕'}</p>
             </div>
